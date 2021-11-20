@@ -21,8 +21,6 @@ const App= () => {
     }
       setCurrentColorArrangement(randomColorArrangement)
   }
-  createBoard()
-    console.log(currentColorArrangement)
 
   return (
     <div>Test</div>
