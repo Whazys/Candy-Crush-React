@@ -1,7 +1,7 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 const width = 8
-const candyColors = [
+const candyColor = [
     'blue',
     'green',
     'orange',
@@ -16,14 +16,31 @@ const App= () => {
   const createBoard = () => {
     const randomColorArrangement = []
     for (let i = 0; i < width * width; i++){
-        const randomColor = candyColors[Math.floor(Math.random() * candyColors.length)]
+        const randomColor = candyColor[Math.floor(Math.random() * candyColor.length)]
         randomColorArrangement.push(randomColor)
     }
       setCurrentColorArrangement(randomColorArrangement)
   }
 
+  useEffect(() => {
+      createBoard();
+  }, [])
+
+    console.log(currentColorArrangement)
+
   return (
-    <div>Test</div>
+    <div className="app">
+        <div className="game">
+            {currentColorArrangement.map((candyColor, index) => (
+                <img
+                    key={index}
+                    style={{backgroundColor: candyColor}}
+                    alt={candyColor}
+                />
+            ))}
+        </div>
+    </div>
+
   );
 }
 
